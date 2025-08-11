@@ -19,7 +19,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-bold mb-4">Matheus Engenheiro</h3>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Especialista em soluções de engenharia com foco em segurança, 
+              Especialista em laudo técnico com foco em segurança, 
               conformidade legal e excelência técnica. Atendimento personalizado 
               e laudos com embasamento técnico sólido.
             </p>
@@ -99,7 +99,7 @@ const Footer = () => {
               © {currentYear} Matheus Engenheiro. Todos os direitos reservados.
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-300">
-              <span>CREA: 123456789-SP</span>
+              <span>CREA-RS: 271119</span>
               <span>|</span>
               <span>Responsável Técnico</span>
             </div>

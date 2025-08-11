@@ -50,7 +50,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-8 text-sm text-gray-300">
               <div className="flex items-center gap-2">
                 <Shield size={16} className="text-yellow-400" />
-                <span>CREA Registrado</span>
+                <span>CREA-RS 271119</span>
               </div>
               <div className="flex items-center gap-2">
                 <FileText size={16} className="text-yellow-400" />

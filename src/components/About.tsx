@@ -12,7 +12,7 @@ const About = () => {
   const achievements = [
     {
       icon: <Award size={24} />,
-      title: 'CREA Registrado',
+      title: 'CREA-RS 271119',
       description: 'Registro profissional ativo no Conselho Regional de Engenharia'
     },
     {
