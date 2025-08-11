@@ -62,14 +62,14 @@ const About = () => {
                 <div className="bg-white/10 rounded-lg p-4">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Calendar size={16} />
-                    <span className="text-2xl font-bold">10+</span>
+                    <span className="text-2xl font-bold">2+</span>
                   </div>
                   <p className="text-sm text-gray-300">Anos de Experiência</p>
                 </div>
                 <div className="bg-white/10 rounded-lg p-4">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <CheckCircle size={16} />
-                    <span className="text-2xl font-bold">500+</span>
+                    <span className="text-2xl font-bold">12+</span>
                   </div>
                   <p className="text-sm text-gray-300">Projetos Concluídos</p>
                 </div>
@@ -83,7 +83,7 @@ const About = () => {
                 <div className="bg-white/10 rounded-lg p-4">
                   <div className="flex items-center justify-center gap-1 mb-1">
                     <Award size={16} />
-                    <span className="text-2xl font-bold">15+</span>
+                    <span className="text-2xl font-bold">Engenheiro Mecânico</span>
                   </div>
                   <p className="text-sm text-gray-300">Certificações</p>
                 </div>
