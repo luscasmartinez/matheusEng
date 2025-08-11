@@ -17,8 +17,8 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="grid lg:grid-cols-2 gap-12 items-center h-full">
           <div className="text-white">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
               Soluções em Engenharia com{' '}
@@ -63,15 +63,16 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Right side with visual elements */}
-          <div className="hidden lg:flex justify-center items-center">
-            <div className="relative">
-              <div className="w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-3xl"></div>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="grid grid-cols-2 gap-4 p-8">
-
-                  <img className="h-auto max-w-lg ms-auto mt-[25px]" src="https://i.imgur.com/fmVbinK.png" alt="image description" />
-
+          {/* Right side with image */}
+          <div className="hidden lg:flex items-end justify-end h-full">
+            <div className="relative w-full h-full flex items-end">
+              <div className="relative w-full">
+                <div className="absolute -bottom-20 right-0 w-full max-w-xl">
+                  <img 
+                    src="https://i.imgur.com/fmVbinK.png" 
+                    alt="Ilustração de engenharia" 
+                    className="w-full h-auto object-contain"
+                  />
                 </div>
               </div>
             </div>
