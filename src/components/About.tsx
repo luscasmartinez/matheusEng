@@ -18,7 +18,7 @@ const About = () => {
     {
       icon: <BookOpen size={24} />,
       title: 'Formação Sólida',
-      description: 'Graduação em Engenharia com especializações em segurança'
+      description: 'Graduação em Engenharia com especialização em Laudos Técnicos'
     },
     {
       icon: <Users size={24} />,
