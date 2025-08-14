@@ -17,7 +17,7 @@ function App() {
 
   // Check if current path is admin
   React.useEffect(() => {
-    if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
+    if (window.location.pathname === '/admin' || window.location.hash === 'admin') {
       setShowAdmin(true);
     }
   }, []);
