@@ -55,6 +55,8 @@ const AdminDashboard = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
+      window.location.hash = '';
+      window.location.reload();
     } catch (error) {
       console.error('Error signing out:', error);
     }
