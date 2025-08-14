@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { addQuoteRequest } from '../services/firebaseService';
 import { 
   Mail, 
   Phone, 
@@ -41,21 +42,30 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        service: '',
-        message: ''
-      });
-    }, 3000);
+    const submitForm = async () => {
+      try {
+        await addQuoteRequest(formData);
+        setIsSubmitted(true);
+        
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            service: '',
+            message: ''
+          });
+        }, 3000);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Erro ao enviar solicitação. Tente novamente.');
+      }
+    };
+    
+    submitForm();
   };
 
   return (

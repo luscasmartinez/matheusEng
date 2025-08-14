@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { getServices } from '../services/firebaseService';
+import { Service as ServiceType } from '../types';
 import {
   Settings,
   Shield,
@@ -10,19 +13,42 @@ import {
   X
 } from 'lucide-react';
 
-type Service = {
-  icon: JSX.Element;
-  title: string;
-  shortDescription: string;
-  longDescription: string;
-  color: string;
+// Icon mapping
+const iconMap: { [key: string]: JSX.Element } = {
+  Settings: <Settings size={40} />,
+  Shield: <Shield size={40} />,
+  Flame: <Flame size={40} />,
+  Box: <Box size={40} />,
+  Users: <Users size={40} />,
+  FileCheck: <FileCheck size={40} />,
+  Wrench: <Settings size={40} />, // Fallback
+  Building: <Box size={40} /> // Fallback
 };
 
 const Services = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState<Service | null>(null);
+  const [selectedService, setSelectedService] = useState<ServiceType | null>(null);
+  const [services, setServices] = useState<ServiceType[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const openModal = (service: Service) => {
+  useEffect(() => {
+    loadServices();
+  }, []);
+
+  const loadServices = async () => {
+    try {
+      const servicesData = await getServices();
+      setServices(servicesData);
+    } catch (error) {
+      console.error('Error loading services:', error);
+      // Fallback to default services if Firebase fails
+      setServices(defaultServices);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const openModal = (service: ServiceType) => {
     setSelectedService(service);
     setModalOpen(true);
     document.body.style.overflow = 'hidden'; // Impede scroll da página quando modal está aberto
@@ -33,62 +59,71 @@ const Services = () => {
     document.body.style.overflow = 'auto'; // Restaura scroll da página
   };
 
-  const services = [
+  // Default services as fallback
+  const defaultServices: ServiceType[] = [
     {
-      icon: <Settings size={40} />,
       title: 'PMOC',
       shortDescription: 'Plano de Manutenção, Operação e Controle de sistemas de climatização, garantindo eficiência energética e qualidade do ar.',
       longDescription: 'O PMOC (Plano de Manutenção, Operação e Controle) é obrigatório para todos os sistemas de climatização de acordo com a Lei Federal 13.589/2018. Nosso serviço inclui: elaboração do plano completo, execução das manutenções preventivas e corretivas, limpeza de componentes, análise da qualidade do ar interior, emissão de relatórios técnicos e treinamento da equipe responsável. Garantimos conformidade com a legislação e melhoria da eficiência energética do sistema.',
-      color: 'from-blue-500 to-blue-600'
+      color: 'from-blue-500 to-blue-600',
+      icon: 'Settings',
+      createdAt: new Date()
     },
     {
-      icon: <Shield size={40} />,
       title: 'NR 11',
       shortDescription: 'Segurança em operações com transportadores industriais e máquinas, garantindo conformidade com a Norma Regulamentadora 11.',
       longDescription: 'A NR 11 estabelece requisitos de segurança para operação de equipamentos como elevadores, guindastes, transportadores de materiais e máquinas em geral. Nossos serviços incluem: análise de risco, elaboração de procedimentos operacionais seguros, inspeção de equipamentos, treinamento de operadores, certificação de equipamentos e assessoria para regularização perante os órgãos fiscalizadores. Prevenimos acidentes e multas por não conformidade.',
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      icon: 'Shield',
+      createdAt: new Date()
     },
     {
-      icon: <Shield size={40} />,
       title: 'NR 12',
       shortDescription: 'Segurança no trabalho em máquinas e equipamentos, atendendo todos os requisitos da Norma Regulamentadora 12.',
       longDescription: 'A NR 12 trata da segurança no trabalho em máquinas e equipamentos. Oferecemos: análise de risco detalhada, adequação de máquinas aos requisitos da norma (proteções, dispositivos de segurança, sistemas de emergência), elaboração de documentação técnica (manual, procedimentos, certificados), treinamento de operadores e manutenção, laudo técnico de conformidade e apoio em fiscalizações. Garantimos que seu parque de máquinas esteja em total conformidade.',
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      icon: 'Shield',
+      createdAt: new Date()
     },
     {
-      icon: <Shield size={40} />,
       title: 'NR 13',
       shortDescription: 'Segurança na operação de vasos de pressão e caldeiras, conforme exigências da Norma Regulamentadora 13.',
       longDescription: 'A NR 13 regulamenta a segurança na operação de vasos de pressão, caldeiras e tubulações. Nossos serviços abrangem: elaboração de PRVC (Plano de Revisão e Verificação de Caldeiras/Vasos), inspeções periódicas, avaliação de integridade estrutural, cálculo de vida útil remanescente, emissão de ART (Anotação de Responsabilidade Técnica), treinamento de operadores e gestão completa da documentação exigida. Assegure a operação segura e legal de seus equipamentos.',
-      color: 'from-green-500 to-green-600'
+      color: 'from-green-500 to-green-600',
+      icon: 'Shield',
+      createdAt: new Date()
     },
     {
-      icon: <Flame size={40} />,
       title: 'AVCB',
       shortDescription: 'Auto de Vistoria do Corpo de Bombeiros, documentação essencial para funcionamento legal e seguro de edificações.',
       longDescription: 'O AVCB (Auto de Vistoria do Corpo de Bombeiros) é documento obrigatório para funcionamento de estabelecimentos comerciais, industriais e de prestação de serviços. Nosso atendimento inclui: análise prévia do local, projeto técnico de prevenção contra incêndio, especificação e instalação de equipamentos (extintores, sprinklers, iluminação de emergência), treinamento de brigada de incêndio, acompanhamento na vistoria e emissão do documento. Garantimos aprovação junto ao Corpo de Bombeiros.',
-      color: 'from-red-500 to-red-600'
+      color: 'from-red-500 to-red-600',
+      icon: 'Flame',
+      createdAt: new Date()
     },
     {
-      icon: <Box size={40} />,
       title: 'Projeto 3D',
       shortDescription: 'Modelagem tridimensional para espaços industriais e comerciais, facilitando visualização e planejamento de projetos.',
       longDescription: 'Nossos projetos em 3D permitem visualização realista de espaços industriais e comerciais antes da execução. Serviços incluem: modelagem BIM (Building Information Modeling), simulação de fluxos de produção, análise ergonômica, layout de máquinas e equipamentos, estudos de acessibilidade, renderização fotorealística e animações para apresentação. Facilitamos a tomada de decisão e evitamos retrabalhos na execução do projeto físico.',
-      color: 'from-purple-500 to-purple-600'
+      color: 'from-purple-500 to-purple-600',
+      icon: 'Box',
+      createdAt: new Date()
     },
     {
-      icon: <Users size={40} />,
       title: 'Playground Infantil',
       shortDescription: 'Projetos de áreas de lazer seguras seguindo NBR 16071, priorizando segurança e diversão para crianças.',
       longDescription: 'Especializados em playgrounds seguros conforme NBR 16071, oferecemos: projeto técnico completo, especificação de brinquedos certificados, análise de impactos e quedas, seleção de pisos amortecentes (emborrachado, grama sintética), sinalização de segurança, laudo técnico de conformidade e manutenção preventiva. Criamos espaços lúdicos que combinam diversão e segurança máxima para crianças, adequados a escolas, condomínios e áreas públicas.',
-      color: 'from-orange-500 to-orange-600'
+      color: 'from-orange-500 to-orange-600',
+      icon: 'Users',
+      createdAt: new Date()
     },
     {
-      icon: <FileCheck size={40} />,
       title: 'Reclassificação de Risco',
       shortDescription: 'Adequação às normas vigentes através de análise técnica e reclassificação de riscos em ambientes industriais.',
       longDescription: 'A reclassificação de risco é necessária quando há mudanças nos processos produtivos ou atualização de normas. Realizamos: análise detalhada dos processos, identificação de novos perigos, avaliação de exposição dos trabalhadores, classificação conforme grau de risco (1 a 4), elaboração de documentos técnicos (PPP, LTCAT), orientação para enquadramento no eSocial e assessoria em auditorias. Mantenha sua empresa sempre em conformidade com a legislação trabalhista e previdenciária.',
-      color: 'from-teal-500 to-teal-600'
+      color: 'from-teal-500 to-teal-600',
+      icon: 'FileCheck',
+      createdAt: new Date()
     }
   ];
 
@@ -112,6 +147,12 @@ const Services = () => {
           </p>
         </div>
 
+        {loading ? (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#081172] mx-auto mb-4"></div>
+            <p className="text-[#2a3b47]">Carregando serviços...</p>
+          </div>
+        ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => (
             <div
@@ -121,7 +162,7 @@ const Services = () => {
               <div className={`h-2 bg-gradient-to-r ${service.color}`}></div>
               <div className="p-8">
                 <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${service.color} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  {service.icon}
+                  {iconMap[service.icon] || iconMap.Settings}
                 </div>
                 <h3 className="text-2xl font-bold text-[#081172] mb-4">
                   {service.title}
@@ -140,6 +181,7 @@ const Services = () => {
             </div>
           ))}
         </div>
+        )}
 
         <div className="text-center">
           <button
@@ -166,7 +208,7 @@ const Services = () => {
               </button>
 
               <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${selectedService.color} text-white mb-6`}>
-                {selectedService.icon}
+                {iconMap[selectedService.icon] || iconMap.Settings}
               </div>
               <h3 className="text-3xl font-bold text-[#081172] mb-4">
                 {selectedService.title}

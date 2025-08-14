@@ -45,6 +45,16 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
             <button 
+              onClick={() => window.location.href = '/admin'}
+              className={`transition-colors font-medium text-xs ${
+                isScrolled 
+                  ? 'text-gray-400 hover:text-[#081172]' 
+                  : 'text-white/60 hover:text-white/80'
+              }`}
+            >
+              Admin
+            </button>
+            <button 
               onClick={() => scrollToSection('home')}
               className={`transition-colors font-medium ${
                 isScrolled 
