@@ -26,7 +26,9 @@ const Contact = () => {
     'Projeto 3D - Modelagem Industrial/Comercial',
     'Playgrounds - Projetos de Áreas de Lazer',
     'Reclassificação de Risco',
-    'Consultoria Geral'
+    'Consultoria Geral',
+    'Outro'
+
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -83,7 +85,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#081172]">Telefone</h4>
-                  <p className="text-[#2a3b47]">(11) 99999-9999</p>
+                  <p className="text-[#2a3b47]">(55) 98121-4094</p>
                 </div>
               </div>
               
@@ -103,7 +105,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-[#081172]">Localização</h4>
-                  <p className="text-[#2a3b47]">São Paulo - SP</p>
+                  <p className="text-[#2a3b47]">Alegrete - RS</p>
                 </div>
               </div>
               
@@ -193,7 +195,7 @@ const Contact = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#081172] focus:border-transparent outline-none transition-colors"
-                      placeholder="(11) 99999-9999"
+                      placeholder="(55) 98121-4094"
                     />
                   </div>
                 </div>

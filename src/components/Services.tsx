@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  Settings, 
-  Shield, 
-  Flame, 
-  Box, 
-  Users, 
+import {
+  Settings,
+  Shield,
+  Flame,
+  Box,
+  Users,
   FileCheck,
   ArrowRight,
   X
@@ -107,7 +107,7 @@ const Services = () => {
             Serviços Especializados
           </h2>
           <p className="text-xl text-[#2a3b47] max-w-3xl mx-auto leading-relaxed">
-            Oferecemos soluções completas em engenharia com foco em segurança, 
+            Oferecemos soluções completas em engenharia com foco em segurança,
             conformidade legal e excelência técnica para seu negócio.
           </p>
         </div>
@@ -158,13 +158,13 @@ const Services = () => {
           <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <div className={`h-2 bg-gradient-to-r ${selectedService.color}`}></div>
             <div className="p-8 relative">
-              <button 
+              <button
                 onClick={closeModal}
                 className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
               >
                 <X size={24} />
               </button>
-              
+
               <div className={`inline-flex p-4 rounded-full bg-gradient-to-r ${selectedService.color} text-white mb-6`}>
                 {selectedService.icon}
               </div>
@@ -175,7 +175,7 @@ const Services = () => {
                 {selectedService.longDescription}
               </p>
               <button
-                onClick={scrollToContact}
+                onClick={() => window.open("https://wa.me/5555981214094?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento", "_blank")}
                 className="inline-flex items-center gap-3 bg-[#081172] hover:bg-[#081172]/90 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg mt-4"
               >
                 Solicitar Orçamento

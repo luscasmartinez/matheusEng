@@ -72,7 +72,7 @@ const Footer = () => {
             <div className="space-y-3 text-gray-300">
               <div className="flex items-center gap-3">
                 <Phone size={16} />
-                <span>(11) 99999-9999</span>
+                <span>(55) 98121-4094</span>
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} />
@@ -80,7 +80,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={16} />
-                <span>São Paulo - SP</span>
+                <span>Alegrete - RS</span>
               </div>
             </div>
             
