@@ -27,11 +27,11 @@ const Footer = () => {
             <div className="flex items-center gap-6 mb-6">
               <div className="flex items-center gap-2">
                 <Shield size={16} className="text-yellow-400" />
-                <span className="text-sm">CREA: 123456789-SP</span>
+                <span className="text-sm">CREA-RS 271119</span>
               </div>
               <div className="flex items-center gap-2">
                 <Award size={16} className="text-yellow-400" />
-                <span className="text-sm">10+ Anos</span>
+                <span className="text-sm">2+ Anos</span>
               </div>
             </div>
 
@@ -45,7 +45,7 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:matheus@engenheiro.com"
+                href="mailto:matheusdelimamartinez@gmail.com"
                 className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-colors"
               >
                 <Mail size={20} />
@@ -76,7 +76,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Mail size={16} />
-                <span>matheus@engenheiro.com</span>
+                <span>matheusdelimamartinez@gmail.com</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={16} />
