@@ -1,5 +1,6 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
@@ -11,16 +12,23 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
-function App() {
-  const { user, loading } = useAuth();
-  const [showAdmin, setShowAdmin] = useState(false);
+function MainWebsite() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Header />
+      <Hero />
+      <Services />
+      <About />
+      <Contact />
+      <Footer />
+      <WhatsAppFloat />
+    </div>
+  );
+}
 
-  // Check if current path is admin
-  React.useEffect(() => {
-    if (window.location.pathname === '/admin' || window.location.hash === '#admin') {
-      setShowAdmin(true);
-    }
-  }, []);
+function AdminRouter() {
+  const { user, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
     return (
@@ -33,25 +41,22 @@ function App() {
     );
   }
 
-  // Admin area
-  if (showAdmin) {
-    if (!user) {
-      return <AdminLogin onLogin={() => {}} />;
-    }
-    return <AdminDashboard />;
+  if (!user) {
+    return <AdminLogin />;
   }
 
-  // Main website
+  return <AdminDashboard />;
+}
+
+function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <Hero />
-      <Services />
-      <About />
-      <Contact />
-      <Footer />
-      <WhatsAppFloat />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainWebsite />} />
+        <Route path="/admin" element={<AdminRouter />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </Router>
   );
 }
 
