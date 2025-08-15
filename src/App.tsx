@@ -25,25 +25,15 @@ function App() {
     );
   }
 
-  // Admin area (acessível apenas via clique no botão)
+  // Área administrativa (sem o Header principal)
   if (showAdmin) {
     if (!user) {
-      return (
-        <>
-          <Header onAdminClick={() => setShowAdmin(true)} />
-          <AdminLogin onLogin={() => setShowAdmin(true)} />
-        </>
-      );
+      return <AdminLogin onLogin={() => setShowAdmin(true)} />;
     }
-    return (
-      <>
-        <Header onAdminClick={() => setShowAdmin(true)} />
-        <AdminDashboard />
-      </>
-    );
+    return <AdminDashboard />;
   }
 
-  // Main website
+  // Site principal (com Header)
   return (
     <div className="min-h-screen bg-gray-50">
       <Header onAdminClick={() => setShowAdmin(true)} />
