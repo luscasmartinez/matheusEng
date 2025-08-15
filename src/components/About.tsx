@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  Award, 
-  BookOpen, 
-  Users, 
+import {
+  Award,
+  BookOpen,
+  Users,
   CheckCircle,
   Star,
-  Calendar 
+  Calendar
 } from 'lucide-react';
 
 const About = () => {
@@ -51,7 +51,7 @@ const About = () => {
               <div className="flex items-center justify-center w-32 h-32 bg-white/10 rounded-full mx-auto mb-8">
                 <Users size={48} className="text-yellow-400" />
               </div>
-              
+
               <div className="text-center mb-8">
                 <h3 className="text-2xl font-bold mb-2">Matheus Martinez</h3>
                 <p className="text-gray-300">Engenheiro Mecânico</p>
@@ -96,15 +96,15 @@ const About = () => {
             <h2 className="text-4xl md:text-5xl font-bold text-[#081172] mb-6">
               Sobre o Profissional
             </h2>
-            
+
             <p className="text-lg text-[#2a3b47] mb-8 leading-relaxed">
               Engenheiro Mecânico com mais de 2 anos de experiência em laudos técnicos e vistorias.
               Especializado pela Engenhando Soluções e Credenciado ao DETRAN-RS e ao CBM-RS.
             </p>
 
             <p className="text-[#2a3b47] mb-8 leading-relaxed">
-              Minha abordagem combina conhecimento técnico aprofundado com atendimento 
-              personalizado, garantindo que cada projeto atenda não apenas às normas 
+              Minha abordagem combina conhecimento técnico aprofundado com atendimento
+              personalizado, garantindo que cada projeto atenda não apenas às normas
               regulamentadoras, mas também às necessidades específicas de cada cliente.
             </p>
 
@@ -140,6 +140,28 @@ const About = () => {
                   </div>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Google Calendar Section */}
+        {/* Google Calendar Section */}
+        {/* Google Calendar Section */}
+        <div className="mt-16">
+          <h3 className="text-3xl font-bold text-[#081172] mb-8 text-center">
+            Agende uma Consulta
+          </h3>
+          <div className="bg-gray-50 p-4 sm:p-6 rounded-2xl">
+            {/* Container com altura fixa no mobile e automática em desktop */}
+            <div className="h-[1250px] md:h-[600px] w-full">
+              <iframe
+                src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2REjO5MLfKOV929-VLZi1rWikOEaBVu7unCeFAuu6QE8RC7ANHFia6kAq1_-9FGoGJqqWCq_S8?gv=true"
+                style={{ border: 0 }}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                className="rounded-lg"
+              ></iframe>
             </div>
           </div>
         </div>
