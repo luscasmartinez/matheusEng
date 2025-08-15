@@ -18,12 +18,12 @@ const About = () => {
     {
       icon: <BookOpen size={24} />,
       title: 'Formação Sólida',
-      description: 'Graduação em Engenharia com especialização em Laudos Técnicos'
+      description: 'Formado no melhor curso de Engenharia Mecânica do Brasil em 2022'
     },
     {
       icon: <Users size={24} />,
       title: 'Experiência Comprovada',
-      description: 'Mais de 10 anos atuando em projetos de grande porte'
+      description: 'Mais de 2 MILHÕES em bens vistoriados e laudos emitidos'
     },
     {
       icon: <CheckCircle size={24} />,
@@ -53,9 +53,9 @@ const About = () => {
               </div>
               
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold mb-2">Matheus Silva</h3>
-                <p className="text-gray-300">Engenheiro Especialista</p>
-                <p className="text-sm text-gray-400 mt-1">CREA: 123456789-SP</p>
+                <h3 className="text-2xl font-bold mb-2">Matheus Martinez</h3>
+                <p className="text-gray-300">Engenheiro Mecânico</p>
+                <p className="text-sm text-gray-400 mt-1">CREA-RS 271119</p>
               </div>
 
               <div className="grid grid-cols-2 gap-4 text-center">
@@ -98,9 +98,8 @@ const About = () => {
             </h2>
             
             <p className="text-lg text-[#2a3b47] mb-8 leading-relaxed">
-              Com mais de uma década de experiência em engenharia, especializo-me em 
-              soluções técnicas que garantem segurança, conformidade legal e eficiência 
-              operacional para empresas de todos os portes.
+              Engenheiro Mecânico com mais de 2 anos de experiência em laudos técnicos e vistorias.
+              Especializado pela Engenhando Soluções e Credenciado ao DETRAN-RS e ao CBM-RS.
             </p>
 
             <p className="text-[#2a3b47] mb-8 leading-relaxed">
