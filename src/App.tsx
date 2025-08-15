@@ -1,6 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useAuth } from './hooks/useAuth';
 import AdminLogin from './components/AdminLogin';
 import AdminDashboard from './components/AdminDashboard';
@@ -12,23 +10,9 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppFloat from './components/WhatsAppFloat';
 
-function MainWebsite() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Header />
-      <Hero />
-      <Services />
-      <About />
-      <Contact />
-      <Footer />
-      <WhatsAppFloat />
-    </div>
-  );
-}
-
-function AdminRouter() {
+function App() {
   const { user, loading } = useAuth();
-  const location = useLocation();
+  const [showAdmin, setShowAdmin] = useState(false);
 
   if (loading) {
     return (
@@ -41,22 +25,35 @@ function AdminRouter() {
     );
   }
 
-  if (!user) {
-    return <AdminLogin />;
+  // Admin area (acessível apenas via clique no botão)
+  if (showAdmin) {
+    if (!user) {
+      return (
+        <>
+          <Header onAdminClick={() => setShowAdmin(true)} />
+          <AdminLogin onLogin={() => setShowAdmin(true)} />
+        </>
+      );
+    }
+    return (
+      <>
+        <Header onAdminClick={() => setShowAdmin(true)} />
+        <AdminDashboard />
+      </>
+    );
   }
 
-  return <AdminDashboard />;
-}
-
-function App() {
+  // Main website
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<MainWebsite />} />
-        <Route path="/admin" element={<AdminRouter />} />
-        <Route path="*" element={<Navigate to="/" />} />
-      </Routes>
-    </Router>
+    <div className="min-h-screen bg-gray-50">
+      <Header onAdminClick={() => setShowAdmin(true)} />
+      <Hero />
+      <Services />
+      <About />
+      <Contact />
+      <Footer />
+      <WhatsAppFloat />
+    </div>
   );
 }
 
